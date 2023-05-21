@@ -23,7 +23,7 @@
                 break;
             }
             $sql = "INSERT INTO empresas (nome, valor, status)" . "VALUES ('$nome', '$valor', '$status')";
-            $result2 = $connection->query($sql2);
+            $result = $connection->query($sql);
             $nome = "";
             $valor = "";
             $status = "";

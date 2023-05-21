@@ -29,10 +29,6 @@
   $sql = "SELECT * FROM produtos";
   $result = $connection->query($sql);
 
-  $sql2 = "SELECT * FROM empresas";
-  $result2 = $connection->query($sql2);
-
-
   // verifica se a conexão aconteceu, se não acontece, aparece o erro
   if (!$result) {
     die("A conexão falhou: " . $connection->connect_error);
