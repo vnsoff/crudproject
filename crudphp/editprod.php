@@ -1,37 +1,46 @@
-<?php 
-    $nome = "";
-    $valor = "";
-    $status = "";
-    $errorMessage = "";
-    $successMessage = "";
+<?php
+// Cria conexão com o banco de dados
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "crudphp";
+$connection = new mysqli($servername,$username,$password,$database);
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "crudphp";
+$id = "";
+$nome = "";
+$valor = "";
+$status = "";
 
-    $connection = new mysqli($servername,$username,$password,$database);
+// Alertas
+$errorMessage = "";
+$successMessage = "";
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $nome = $_POST["nome"];
-        $valor = $_POST["valor"];
-        $status = $_POST["status"];
+if ($_SERVER['REQUEST_METHOD']) {
+  //Metodo Get: mostrar os dados e verifica se o id existe
+  if(!isset($_GET["id"])) {
+    header("location: /crudphp/index.php");
+    exit;
+  }
+  $id = $_GET["id"];
+  $sql_prod = "SELECT * FROM produtos WHERE id=$id";
+  $result_prod = $connection->query($sql_prod);
+  $row = $result_prod->fetch_assoc();
+  if (!$row) {
+    header("location: /crudphp/index.php");
+    exit;
+  }
+  $nome = $row["nome"];
+  $valor = $row["valor"];
+  $status = $row["status"];
+} else {
+  //Metodo Post: atualiza os dados
+  $id = $_POST["id"];
+  $nome = $_POST["nome"];
+  $valor = $_POST["valor"];
+  $status = $_POST["status"];
+}
 
-        do {
-            if ( empty($nome) || empty($valor) ) {
-                $errorMessage = "É necessário preencher todos os campos do formulário.";
-                break;
-            }
-            $sql = "INSERT INTO produtos (nome, valor, status)" . "VALUES ('$nome', '$valor', '$status')";
-            $result = $connection->query($sql);
-            $nome = "";
-            $valor = "";
-            $status = "";
-        }
-        while (false);
-    } 
 ?>
-
 <!doctype html>
 <html lang="en">
 
@@ -59,6 +68,7 @@
     }
     ?>
     <form method="post">
+      <input type="hidden" value="<?php  echo $id;?>" >
       <div class="form-group">
         <label for="nome">Nome do Produto</label>
         <input type="nome" name="nome" class="form-control" value="<?php  echo $nome;?>" placeholder="Insira o nome do produto">
@@ -79,8 +89,7 @@
           Não
         </label>
       </div>
-      <button type="submit" class="btn btn-primary" name="submit">Criar</button>
-      <button onclick="location.href='index.php'" type="button" class="btn btn-secondary">Cancelar</button>
+      <button type="submit" class="btn btn-primary" name="submit">Criar</button>     
     </form>
   </div>
 </body>

@@ -26,11 +26,14 @@
   if ($connection->connect_error) {
     die("A conexão falhou: " . $connection->connect_error);
   }
-  $sql = "SELECT * FROM produtos";
-  $result = $connection->query($sql);
+  $sql_prod = "SELECT * FROM produtos";
+  $result_prod = $connection->query($sql_prod);
+
+  $sql_emp = "SELECT * FROM empresas";
+  $result_emp = $connection->query($sql_emp);
 
   // verifica se a conexão aconteceu, se não acontece, aparece o erro
-  if (!$result) {
+  if (!$result_prod) {
     die("A conexão falhou: " . $connection->connect_error);
   }
   ?>
@@ -50,7 +53,7 @@
     </thead>
     <tbody>
       <?php 
-      while ($row = $result->fetch_assoc()) {
+      while ($row = $result_prod->fetch_assoc()) {
       //verifica se o bool é 1 ou 0 e muda para uma nova variavel
       if ($row["status"] == "0") {
         $row["status"] = "Sim";
@@ -67,6 +70,8 @@
       ?>
     </tbody>
   </table>
+
+    <!-- Botao Adicionar Produtos -->
   <button type="submit" class="btn btn-primary" name="submit" href='crudphp/criarproduto.php'>Adicionar Produto</button>     
 </div>  
 
@@ -80,11 +85,12 @@
         <th>ID</th>
         <th>Nome da Empresa</th>
         <th>CNPJ</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
     <?php 
-      while ($row = $result2->fetch_assoc()) {
+      while ($row = $result_emp->fetch_assoc()) {
       //verifica se o bool é 1 ou 0 e muda para uma nova variavel
       if ($row["status"] == "0") {
         $row["status"] = "Ativa";
@@ -94,7 +100,7 @@
       echo "<tr>
                 <td>$row[id]</td>
                 <td>$row[nome]</td>
-                <td>$row[valor]</td>
+                <td>$row[cnpj]</td>
                 <td>$row[status]</td>
             </tr>";
            }
@@ -102,7 +108,9 @@
 
     </tbody>
   </table>
-  <button type="submit" class="btn btn-primary" name="submit" href='/criarempresas.php'>Adicionar Empresa</button>     
-</div>  
+
+  <!-- Botao Adicionar Empresas -->
+  <button onclick="location.href='criarempresa.php'" type="submit" class="btn btn-primary" name="submit">Adicionar Empresa</button>     
+</div>
 </body>
 </html>

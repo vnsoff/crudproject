@@ -1,37 +1,3 @@
-<?php 
-    $nome = "";
-    $cnpj = "";
-    $status = "";
-    $errorMessage = "";
-    $successMessage = "";
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "crudphp";
-
-    $connection = new mysqli($servername,$username,$password,$database);
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $nome = $_POST["nome"];
-        $cnpj = $_POST["cnpj"];
-        $status = $_POST["status"];
-
-        do {
-            if ( empty($nome) || empty($cnpj) ) {
-                $errorMessage = "É necessário preencher todos os campos do formulário.";
-                break;
-            }
-            $sql = "INSERT INTO empresas (nome, cnpj, status)" . "VALUES ('$nome', '$cnpj', '$status')";
-            $result = $connection->query($sql);
-            $nome = "";
-            $cnpj = "";
-            $status = "";
-        }
-        while (false);
-    } 
-?>
-
 <!doctype html>
 <html lang="en">
 
@@ -59,6 +25,7 @@
     }
     ?>
     <form method="post">
+    <input type="hidden">
       <div class="form-group">
         <label for="nomeempresa">Nome do Produto</label>
         <input type="nome" name="nome" class="form-control" value="<?php  echo $nome;?>" placeholder="Insira o nome da empresa">
@@ -79,8 +46,7 @@
           Inativa
         </label>
       </div>
-      <button type="submit" class="btn btn-primary" name="submit">Criar</button>
-      <button onclick="location.href='index.php'" type="button" class="btn btn-secondary">Cancelar</button>
+      <button type="submit" class="btn btn-primary" name="submit">Criar</button>     
     </form>
   </div>
 </body>
