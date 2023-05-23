@@ -55,7 +55,7 @@ else {
       break;
   }
   //Atualiza no bando de dados as variáveis nome, cnpj e status de acordo com o id deste item
-  $sql ="UPDATE produtos SET nome = '$nome', cnpj = '$cnpj', status = '$status' WHERE id = $id";
+  $sql ="UPDATE empresas SET nome = '$nome', cnpj = '$cnpj', status = '$status' WHERE id = $id";
   $result = $connection->query($sql);
   //Mostra o erro de conexão quando não foi possível enviar a atualização para o banco de dados
   if (!$result) {
