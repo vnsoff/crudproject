@@ -1,15 +1,17 @@
 <?php 
+    //Inicializando as variáveis
     $nome = "";
     $cnpj = "";
     $status = "";
+    //Inicializando os alertas
     $errorMessage = "";
     $successMessage = "";
 
+    //Cria conexão com o banco de dados
     $servername = "localhost";
     $username = "root";
     $password = "";
     $database = "crudphp";
-
     $connection = new mysqli($servername,$username,$password,$database);
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -27,8 +29,8 @@
             $nome = "";
             $cnpj = "";
             $status = "";
-        }
-        while (false);
+            $successMessage = "Empresa adicionada com sucesso";
+        } while (false);
     } 
 ?>
 
@@ -41,7 +43,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" crossorigin="anonymous">            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <title>Nova Empresa</title>
 </head>
 
@@ -60,27 +62,43 @@
     ?>
     <form method="post">
       <div class="form-group">
-        <label for="nomeempresa">Nome do Produto</label>
+        <label for="nome">Nome da Empresa</label>
         <input type="nome" name="nome" class="form-control" value="<?php  echo $nome;?>" placeholder="Insira o nome da empresa">
       </div>
       <div class="form-group">
-        <label for="valorcnpj">Valor do Produto</label>
-        <input type="cnpj" name="cnpj" class="form-control" value="<?php  echo $cnpj;?>" placeholder="Insira o cnpj da empresa">
+        <label for="cnpjempresa">CNPJ</label>
+        <input type="cnpj" name="cnpj" class="form-control" value="<?php  echo $cnpj;?>" placeholder="Insira o CNPJ da empresa">
       </div>
       <div class="form-check my-2">
-        <input class="form-check-input" type="radio" name="status" value="0" checked>
+        <!-- Botão já preenchido para não causar erros de null -->
+        <input class="form-check-input" type="radio" name="status" value="Ativa" checked>
         <label class="form-check-label" for="0">
           Ativa
         </label>
       </div>
       <div class="form-check my-2">
-        <input class="form-check-input" type="radio" name="status" value="1">
+        <input class="form-check-input" type="radio" name="status" value="Inativa">
         <label class="form-check-label" for="1">
           Inativa
         </label>
       </div>
+      <!-- Mensagem de sucesso se o produto foi criado -->
+      <?php 
+      if (!empty ($successMessage)) {
+        echo "
+        <div class ='alert alert-success alert-dismissible fade show' role 'alert'> 
+            <strong>$successMessage</strong>
+        </div>
+        ";
+      }
+      ?>
+      <!-- O botão criar um produto com os inputs que foram preenchidos -->
       <button type="submit" class="btn btn-primary" name="submit">Criar</button>
+      <!-- O botão vai redirecionar para index.php -->      
       <button onclick="location.href='index.php'" type="button" class="btn btn-secondary">Cancelar</button>
+      <!-- O botão vai redirecionar para index.php -->
+      <button button onclick="location.href='index.php'" type="button" class="btn btn-primary bi bi-box-arrow-left" ></button>
+
     </form>
   </div>
 </body>

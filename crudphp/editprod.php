@@ -92,8 +92,9 @@ else {
         ";
     }
     ?>
-
+    <!-- Formulário -->
     <form method="post">
+      <!-- Id secreto para não ser ajustado nem visível para o usuário, precisa existir para completar o formulário -->
       <input type ="hidden" name = "id" value="<?php  echo $id;?>">
       <div class="form-group">
         <label for="nome">Nome do Produto</label>
@@ -126,13 +127,5 @@ else {
       <button button onclick="location.href='index.php'" type="button" class="btn btn-primary bi bi-box-arrow-left" ></button>
 
   </form> 
-  
-  <!-- $_POST (Pacote com as informações)= {
-id = ""// id do produto
-nome = ""// nome do produto
-valor = ""// valor do produto
-status = ""// status do produto
-  } -->
-
   </div>
 </body>
