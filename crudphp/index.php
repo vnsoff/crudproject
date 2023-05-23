@@ -62,7 +62,7 @@
                 <td>$row[status]</td>
                 <td>
                     <a class='btn btn-primary btn-sm' href='/crudproject/crudphp/editprod.php?id=$row[id]'>Edit</a>
-                    <a class='btn btn-danger btn-sm' href='/crudproject/crudphp/delete.php?id=$row[id]'> Deletar </a>
+                    <a class='btn btn-danger btn-sm' href='/crudproject/crudphp/deleteprod.php?id=$row[id]'> Deletar </a>
                 </td>
 
             </tr>";
@@ -99,7 +99,7 @@
                 <td>$row[status]</td>
                 <td>
                 <a class='btn btn-primary btn-sm' href='/crudproject/crudphp/editemp.php?id=$row[id]'>Edit</a>
-                <a class='btn btn-danger btn-sm' href='/crudproject/crudphp/delete.php?id=$row[id]'> Deletar </a>
+                <a class='btn btn-danger btn-sm' href='/crudproject/crudphp/deleteemp.php?id=$row[id]'> Deletar </a>
                 </td>
             </tr>";
            }
