@@ -55,12 +55,6 @@
     <tbody>
       <?php 
       while ($row = $result_prod->fetch_assoc()) {
-      //verifica se o bool é 1 ou 0 e muda para uma nova variavel
-      if ($row["status"] == "0") {
-        $row["status"] = "Sim";
-      } else {
-        $row["status"] = "Não";
-      }
       echo "<tr>
                 <td>$row[id]</td>
                 <td>$row[nome]</td>

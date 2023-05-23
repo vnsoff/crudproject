@@ -5,6 +5,14 @@ $nome = "";
 $valor = "";
 $status = "";
 
+//Conexão
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "crudphp";
+$connection = new mysqli($servername,$username,$password,$database);
+
+
 //Inicializando os alertas
 $errorMessage= "";
 $successMessage= "";
@@ -15,7 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] =='GET') {
   if (!isset($_GET["id"])) {
   //
   header("location: /crudproject/crudphp/index.php");
-  } exit;
+  exit;
+  } 
   $id = $_GET["id"];
   $sql = "SELECT * FROM produtos WHERE id=$id";
   $result = $connection->query($sql);
@@ -33,24 +42,26 @@ if ($_SERVER['REQUEST_METHOD'] =='GET') {
 
 //POST
 else {
-  $id = "";
-  $nome = "";
-  $valor = "";
-  $status = "";
+  $id = $_POST["id"];
+  $nome = $_POST["nome"];
+  $valor = $_POST["valor"];
+  $status = $_POST["status"];
   do {
     if ( empty($id) || empty($nome) || empty($valor) || empty($status) ) {
       $errorMessage = "É necessário preencher todos os campos do formulário.";
       break;
   }
-  $sql = "UPDATE produtos" . 
-        "SET nome = '$nome', valor = '$valor' status = '$status' ".
-        "WHERE id = $id";
-        $result = $connection->query($sql);
+  $sql ="UPDATE produtos SET nome = '$nome', valor = '$valor', status = '$status' WHERE id = $id";
+        
+  $result = $connection->query($sql);
 
-        if (!$result) {
-          $errorMessage = "Query inválido: " . $connection->error;
-        } break;
-
+  if (!$result) {
+    $errorMessage = "Query inválido: " . $connection->error;
+    break;
+    } 
+  $successMessage = "Dados atualizados com sucesso.";
+  header("location: /crudproject/crudphp/index.php");
+  exit;
   } while (false);
 }
 
@@ -64,7 +75,7 @@ else {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" crossorigin="anonymous">            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <title>Alterar Produto</title>
 </head>
 
@@ -81,6 +92,7 @@ else {
         ";
     }
     ?>
+
     <form method="post">
       <input type ="hidden" name = "id" value="<?php  echo $id;?>">
       <div class="form-group">
@@ -92,23 +104,35 @@ else {
         <input type="valor" name="valor" class="form-control" value="<?php  echo $valor;?>" placeholder="Insira o valor do produto">
       </div>
       <div class="form-check my-2">
-        <input class="form-check-input" type="radio" name="status" value="0" checked>
+        <input class="form-check-input" type="radio" name="status" value="Sim">
         <label class="form-check-label" for="0">
           Sim
         </label>
       </div>
       <div class="form-check my-2">
-        <input class="form-check-input" type="radio" name="status" value="1">
+        <input class="form-check-input" type="radio" name="status" value="Não">
         <label class="form-check-label" for="1">
           Não
         </label>
       </div>
+
+      <!-- O botão vai redirecionar para a mesma página como não tem uma outra página endereçada -->
       <button type="submit" class="btn btn-primary" name="submit">Alterar</button>
+
+      <!-- O botão vai redirecionar para index.php -->
       <button onclick="location.href='index.php'" type="button" class="btn btn-secondary">Cancelar</button>
-  </form> <!-- $_POST = {
+
+      <!-- O botão vai redirecionar para index.php -->
+      <button button onclick="location.href='index.php'" type="button" class="btn btn-primary bi bi-box-arrow-left" ></button>
+
+  </form> 
+  
+  <!-- $_POST (Pacote com as informações)= {
 id = ""// id do produto
 nome = ""// nome do produto
-..
+valor = ""// valor do produto
+status = ""// status do produto
   } -->
+
   </div>
 </body>
