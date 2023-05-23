@@ -49,6 +49,7 @@
         <th>Nome do Produto</th>
         <th>Valor</th>
         <th>Status</th>
+        <th>Ação</th>
       </tr>
     </thead>
     <tbody>
@@ -65,6 +66,11 @@
                 <td>$row[nome]</td>
                 <td>$row[valor]</td>
                 <td>$row[status]</td>
+                <td>
+                    <a class='btn btn-primary btn-sm' href='/crudproject/crudphp/editprod.php?id=$row[id]'>Edit</a>
+                    <a class='btn btn-danger btn-sm' href='/crudproject/crudphp/delete.php?id=$row[id]'> Deletar </a>
+                </td>
+
             </tr>";
            }
       ?>
@@ -72,7 +78,7 @@
   </table>
 
     <!-- Botao Adicionar Produtos -->
-  <button type="submit" class="btn btn-primary" name="submit" href='crudphp/criarproduto.php'>Adicionar Produto</button>     
+  <button onclick="location.href='criarproduto.php'" type="submit" class="btn btn-primary" name="submit">Adicionar Produto</button>     
 </div>  
 
 <!-- Tabela de Empresas -->
@@ -86,6 +92,7 @@
         <th>Nome da Empresa</th>
         <th>CNPJ</th>
         <th>Status</th>
+        <th>Ação</th>
       </tr>
     </thead>
     <tbody>
@@ -102,6 +109,10 @@
                 <td>$row[nome]</td>
                 <td>$row[cnpj]</td>
                 <td>$row[status]</td>
+                <td>
+                <a class='btn btn-primary btn-sm' href='/crudproject/crudphp/editemp.php?id=$row[id]'>Edit</a>
+                <a class='btn btn-danger btn-sm' href='/crudproject/crudphp/delete.php?id=$row[id]'> Deletar </a>
+                </td>
             </tr>";
            }
       ?>
