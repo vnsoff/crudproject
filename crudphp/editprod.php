@@ -104,13 +104,13 @@ else {
         <input type="valor" name="valor" class="form-control" value="<?php  echo $valor;?>" placeholder="Insira o valor do produto">
       </div>
       <div class="form-check my-2">
-        <input class="form-check-input" type="radio" name="status" value="Sim">
+        <input class="form-check-input" type="radio" name="status" value="Sim" <?php echo ($status=='Sim')?'checked':'' ?>>
         <label class="form-check-label" for="0">
           Sim
         </label>
       </div>
       <div class="form-check my-2">
-        <input class="form-check-input" type="radio" name="status" value="Não">
+        <input class="form-check-input" type="radio" name="status" value="Não" <?php echo ($status=='Não')?'checked':'' ?>>
         <label class="form-check-label" for="1">
           Não
         </label>
