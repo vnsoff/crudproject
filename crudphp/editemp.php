@@ -80,7 +80,10 @@ else {
   <title>Alterar Empresa</title>
 </head>
 
-<body>
+<body style = "background-color: #e9e9f5;" >
+  <!-- Navbar -->
+  <ul class="navbar "style="background-color: #212A3E; height: 60px;">
+  </ul>
 
 <div class="container my-5">
     <h2>Alterar Empresa</h2>
@@ -119,7 +122,7 @@ else {
       </div>
 
       <!-- O botão enviar o POST (contendo inputs do formulário) -->
-      <button type="submit" class="btn btn-primary" name="submit">Alterar</button>
+      <button type="submit" class="btn btn-primary my-2" name="submit">Alterar</button>
 
       <!-- O botão vai redirecionar para index.php -->
       <button onclick="location.href='index.php'" type="button" class="btn btn-secondary">Cancelar</button>

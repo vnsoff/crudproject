@@ -12,7 +12,11 @@
   <title>Tabelas</title>
 </head>
 
-<body>
+<body style = "background-color: #e9e9f5;" >
+  <!-- Navbar -->
+  <ul class="navbar "style="background-color: #212A3E; height: 60px;">
+  </ul>
+  
   <?php 
   $servername = "localhost";
   $username = "root";
@@ -76,6 +80,7 @@
 </div>  
 
 <!-- Tabela de Empresas -->
+
 <div class="container my-5">
   <h2>Tabela de Empresas</h2>
   <p>A tabela abaixo contém as empresas.</p>            
@@ -104,7 +109,6 @@
             </tr>";
            }
       ?>
-
     </tbody>
   </table>
 

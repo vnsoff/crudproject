@@ -47,7 +47,10 @@
   <title>Nova Empresa</title>
 </head>
 
-<body>
+<body style = "background-color: #e9e9f5;" >
+  <!-- Navbar -->
+  <ul class="navbar "style="background-color: #212A3E; height: 60px;">
+  </ul>
 
 <div class="container my-5">
     <h2>Nova Empresa</h2>
@@ -93,7 +96,7 @@
       }
       ?>
       <!-- O botão criar um produto com os inputs que foram preenchidos -->
-      <button type="submit" class="btn btn-primary" name="submit">Criar</button>
+      <button type="submit" class="btn btn-primary my-2" name="submit">Criar</button>
       <!-- O botão vai redirecionar para index.php -->      
       <button onclick="location.href='index.php'" type="button" class="btn btn-secondary">Cancelar</button>
       <!-- O botão vai redirecionar para index.php -->

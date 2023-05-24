@@ -79,7 +79,10 @@ else {
   <title>Alterar Produto</title>
 </head>
 
-<body>
+<body style = "background-color: #e9e9f5;" >
+  <!-- Navbar -->
+  <ul class="navbar "style="background-color: #212A3E; height: 60px;">
+  </ul>
 
 <div class="container my-5">
     <h2>Alterar Produto</h2>
@@ -118,7 +121,7 @@ else {
       </div>
 
       <!-- O botão vai redirecionar para a mesma página como não tem uma outra página endereçada -->
-      <button type="submit" class="btn btn-primary" name="submit">Alterar</button>
+      <button type="submit" class="btn btn-primary my-2" name="submit">Alterar</button>
 
       <!-- O botão vai redirecionar para index.php -->
       <button onclick="location.href='index.php'" type="button" class="btn btn-secondary">Cancelar</button>
