@@ -60,8 +60,7 @@ else {
     break;
     } 
   $successMessage = "Dados atualizados com sucesso.";
-  header("location: /crudproject/crudphp/index.php");
-  exit;
+
   } while (false);
 }
 
@@ -119,7 +118,15 @@ else {
           Não
         </label>
       </div>
-
+      <?php 
+      if (!empty ($successMessage)) {
+      echo "
+      <div class ='alert alert-success alert-dismissible fade show' role 'alert'> 
+        <strong>$successMessage</strong>
+      </div>
+        ";
+      }
+      ?>
       <!-- O botão vai redirecionar para a mesma página como não tem uma outra página endereçada -->
       <button type="submit" class="btn btn-primary my-2" name="submit">Alterar</button>
 

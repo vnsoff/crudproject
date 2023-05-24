@@ -62,7 +62,7 @@ else {
     $errorMessage = "Query inválido: " . $connection->error;
     break;
     }
-
+  $successMessage = "Dados atualizados com sucesso.";
   } while (false);
 }
 ?>
@@ -120,7 +120,15 @@ else {
           Inativa
         </label>
       </div>
-
+      <?php 
+      if (!empty ($successMessage)) {
+      echo "
+      <div class ='alert alert-success alert-dismissible fade show' role 'alert'> 
+        <strong>$successMessage</strong>
+      </div>
+        ";
+      }
+      ?>
       <!-- O botão enviar o POST (contendo inputs do formulário) -->
       <button type="submit" class="btn btn-primary my-2" name="submit">Alterar</button>
 
