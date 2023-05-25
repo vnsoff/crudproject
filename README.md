@@ -1,5 +1,6 @@
 # CrudProject
 <h2>Sobre o teste</h2>
+<h3> Arquivos principais: Acessar o arquivo index.php na pasta crudphp, e indexprod na pasta Views do crudigniter</h3>
 <p>Foi implementado dois sistemas de CRUD (Create, Read, Update e Delete), o primeiro utilizando apenas com PHP e o segundo, utilizando o framework CodeIgniter 4. </p>
 <p>Em ambos foi utilizado o Bootstrap e um pouco de Javascript. </p>
 <p>O banco de dados utilizado foi o Mysql como solicitado, instalado por meio do xampp. </p>
