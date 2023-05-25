@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Editar Empresa</title>
+    <title>Nova Empresa</title>
 </head>
 <body>
     <div class="container mt-5">
@@ -21,13 +21,13 @@
         </div>
         <div class="form-check my-2">
         <!-- Botão já preenchido para não causar erros de null -->
-        <input class="form-check-input" type="radio" name="status" value="Sim" checked>
+        <input class="form-check-input" type="radio" name="status" value="Ativa" checked>
         <label class="form-check-label" for="0">
           Ativa
         </label>
         </div>
         <div class="form-check my-2">
-        <input class="form-check-input" type="radio" name="status" value="Não">
+        <input class="form-check-input" type="radio" name="status" value="Inativa">
         <label class="form-check-label" for="1">
           Inativa
         </label>

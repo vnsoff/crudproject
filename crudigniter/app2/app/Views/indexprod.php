@@ -63,7 +63,7 @@
                 <td><?php echo $produtos['valor']?></td>
                 <td><?php echo $produtos['status']?></td>
                 <td>
-                    <?php echo anchor ('produtos/edit/' . $produtos['id'], 'Editar')?>
+                    <?php echo anchor ('produtos/edit/' . $produtos['id'], 'Editar', ['onclick' => 'return edit()'] )?>
                     <?php echo anchor ('produtos/delete/' . $produtos['id'], 'Deletar', ['onclick' => 'return confirma()'])?>
                 </td>
             </tr>

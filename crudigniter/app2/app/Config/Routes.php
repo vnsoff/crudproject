@@ -32,6 +32,10 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Produtos::index');
 $routes->get('empresas/', 'Empresas::index');
+$routes->post('produtos/store', 'Produtos::store');
+$routes->post('empresas/store', 'Empresas::store');
+$routes->post('produtos/edit', 'Produtos::edit');
+$routes->post('empresas/edit', 'Empresas::edit');
 
 /*
  * --------------------------------------------------------------------
