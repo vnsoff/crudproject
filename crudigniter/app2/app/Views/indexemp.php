@@ -43,9 +43,9 @@
     <?php echo anchor('produtos', 'Produtos', 'class="btn btn-dark mx-4"'); ?>
     <?php echo anchor('empresas', 'Empresas', 'class="btn btn-dark mx-4"'); ?>
     </ul>
-    <!-- Tabela de produtos -->
+    <!-- Tabela de empresas -->
     <div class="container mt-5">
-    <?php echo anchor(base_url('empresas/criar'), 'Novo produto', ['class'=>'btn btn-success mb-4'])?>
+    <?php echo anchor(base_url('empresas/criar'), 'Nova Empresa', ['class'=>'btn btn-success mb-4'])?>
         <h3>Tabela de Empresas</h3>
         <table class="table table-bordered">
             <tr>
@@ -62,8 +62,8 @@
                 <td><?php echo $empresas['cnpj']?></td>
                 <td><?php echo $empresas['status']?></td>
                 <td>
-                    <a class='btn btn-primary btn-sm' href=''>Edit</a>
-                    <a class='btn btn-danger btn-sm' href=''>Edit</a>
+                    <?php echo anchor ('empresas/edit/' . $empresas['id'], 'Editar')?>
+                    <?php echo anchor ('empresas/delete/' . $empresas['id'], 'Deletar', ['onclick' => 'return confirma()'])?>
                 </td>
             </tr>
             <?php endforeach; ?>

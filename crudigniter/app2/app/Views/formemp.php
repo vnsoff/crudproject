@@ -10,7 +10,6 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h3>Adicionar Empresa</h3>
         <?php echo form_open('empresas/store')?>
         <div class="form-group"> 
             <label for="nome"> Nome da Empresa </label>
@@ -37,7 +36,7 @@
           <input type="submit" value="Salvar" class="btn btn-success"></input>
           <input type="hidden" value = "<?php echo isset($id ['id']) ? $id['id'] : '' ?>" name="id" id="id"></input>
           <?php echo anchor('produtos', 'Cancelar', 'class="btn btn-dark mx-4"'); ?>
-          <?php echo form_close();?>
         </div>
+        <?php echo form_close();?>
 </body>
 </html>

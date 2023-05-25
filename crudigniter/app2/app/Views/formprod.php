@@ -10,16 +10,15 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h3>Adicionar Produto</h3>
         <?php echo form_open('produtos/store')?>
-
+        <input type="hidden" name="id" value = "<?php echo isset($id ['id']) ? $id['id'] : '' ?>"></input>
         <div class="form-group"> 
-            <label for="nome"> Nome do produto </label>
-            <input type="text" value = "<?php echo isset($nome ['nome']) ? $nome['nome'] : '' ?>" name="nome" id="nome" class="form-control"> </input>
+            <label for="nomeproduto"> Nome do produto </label>
+            <input type="text" value = "<?php echo isset($nome ['nomeproduto']) ? $nome['nomeproduto'] : '' ?>" name="nome" id="nome" class="form-control"> </input>
         </div>
         <div class="form-group"> 
-            <label for="valor"> Valor</label>
-            <input type="text" value = "<?php echo isset($valor ['valor']) ? $nome['valor'] : '' ?>" name="valor" id="valor" class="form-control"> </input>
+            <label for="valorproduto"> Valor</label>
+            <input type="text" value = "<?php echo isset($valor ['valorproduto']) ? $nome['valorproduto'] : '' ?>" name="valor" id="valor" class="form-control"> </input>
         </div>
         <div class="form-check my-2">
         <!-- Botão já preenchido para não causar erros de null -->
@@ -36,9 +35,8 @@
         </div>
           <!-- Botao Adicionar Produtos -->
           <input type="submit" value="Salvar" class="btn btn-success"></input>
-          <input type="hidden" value = "<?php echo isset($id ['id']) ? $id['id'] : '' ?>" name="id" id="id"></input>
           <?php echo anchor('produtos', 'Cancelar', 'class="btn btn-dark mx-4"'); ?>
-          <?php echo form_close();?>
         </div>
+        <?php echo form_close();?>
 </body>
 </html>

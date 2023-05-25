@@ -8,6 +8,7 @@ class ModeloProduto extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'produtos';
+    protected $insertID         = '0';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

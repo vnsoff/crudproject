@@ -9,6 +9,7 @@ class ModeloEmpresa extends Model
     protected $DBGroup          = 'default';
     protected $table            = 'empresas';
     protected $primaryKey       = 'id';
+    protected $insertID         = '0';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
