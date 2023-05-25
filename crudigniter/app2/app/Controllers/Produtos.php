@@ -41,7 +41,7 @@ class Produtos extends BaseController
         }
     }
 
-    public function edit ($id){
+    public function edit ($id){       
         return view('formprod', [
             'produtos' => $this->produtoModelo->find($id)
         ]);
