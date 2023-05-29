@@ -14,18 +14,23 @@
     $database = "crudphp";
     $connection = new mysqli($servername,$username,$password,$database);
 
+    // Utiliza o método POST para guardar arrays de todos os inputs
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nome = $_POST["nome"];
         $cnpj = $_POST["cnpj"];
         $status = $_POST["status"];
-
+        // Caso os dados nome ou valor estejam vazios, mostrar mensagem de erro para preencher todos os campos
+        // Apenas inserir se todos os campos estiverem preenchidos
         do {
             if ( empty($nome) || empty($cnpj) ) {
                 $errorMessage = "É necessário preencher todos os campos do formulário.";
                 break;
             }
+            // Variável sql que insere as variáveis nos campos da database
             $sql = "INSERT INTO empresas (nome, cnpj, status)" . "VALUES ('$nome', '$cnpj', '$status')";
+            // Envia para o banco de dados
             $result = $connection->query($sql);
+            // Deixa os campos vazios novamente
             $nome = "";
             $cnpj = "";
             $status = "";

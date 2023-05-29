@@ -1,11 +1,11 @@
 <?php
-//Inicializando as variáveis
+// Inicializando as variáveis
 $id = "";
 $nome = "";
 $valor = "";
 $status = "";
 
-//Conexão
+// Conexão com o banco de dados
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -13,27 +13,35 @@ $database = "crudphp";
 $connection = new mysqli($servername,$username,$password,$database);
 
 
-//Inicializando os alertas
+// Inicializando os alertas
 $errorMessage= "";
 $successMessage= "";
 
-//Se o método de request do servidor for GET
+// Se o método de request do servidor for GET
 if ($_SERVER['REQUEST_METHOD'] =='GET') {
-  //Se não tiver o id
+  // Se não tiver o id
   if (!isset($_GET["id"])) {
-  //
+  //Se não houver ID, retornar para o index.php
   header("location: /crudproject/crudphp/index.php");
   exit;
   } 
+  // Pega o ID com o método GET
   $id = $_GET["id"];
+  // Variável que seleciona todas as colunas da table produtos que contém ID
   $sql = "SELECT * FROM produtos WHERE id=$id";
+  // Conecta na database e armazena todas as colunas da tabela produtos na variável result
   $result = $connection->query($sql);
+  // Cada coluna é buscada na database para preencher corretamente cada linha
+  // Os botões redirecionam para os scripts de editar e deletar produtos
   $row = $result->fetch_assoc();
+
+  //Se não há  linhas na tabela, ou seja, não há informações, retornar ao index.php também
 
   if (!$row) {
     header("location: /crudproject/crudphp/index.php");
   }
-
+  // Preenche as variáveis relacionadas ao ID que está sendo editado nas respectivas colunas
+  // E consequentemente preenche esses dados na tela, para mostrar o que está sendo editado
   $nome = $row["nome"];
   $valor = $row["valor"];
   $status = $row["status"];
@@ -42,19 +50,21 @@ if ($_SERVER['REQUEST_METHOD'] =='GET') {
 
 //POST
 else {
+  //Utiliza o método POST para guardar arrays de todos os inputs e o id desse formulário (mesmo o id não sendo alterável)
   $id = $_POST["id"];
   $nome = $_POST["nome"];
   $valor = $_POST["valor"];
   $status = $_POST["status"];
   do {
+    //Se não estiverem preenchidos todos os campos do formulário, mostrar mensagem de erro
     if ( empty($id) || empty($nome) || empty($valor) || empty($status) ) {
       $errorMessage = "É necessário preencher todos os campos do formulário.";
       break;
   }
-  $sql ="UPDATE produtos SET nome = '$nome', valor = '$valor', status = '$status' WHERE id = $id";
-        
+  //Atualiza no bando de dados as variáveis nome, valor e status de acordo com o id deste item
+  $sql ="UPDATE produtos SET nome = '$nome', valor = '$valor', status = '$status' WHERE id = $id";    
   $result = $connection->query($sql);
-
+  //Mostra o erro de conexão quando não foi possível enviar a atualização para o banco de dados
   if (!$result) {
     $errorMessage = "Query inválido: " . $connection->error;
     break;

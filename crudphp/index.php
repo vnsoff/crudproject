@@ -23,20 +23,23 @@
   $password = "";
   $database = "crudphp";
 
-  // cria a conexão com o servidor
+  // Cria a conexão com o servidor utilizando os parametros
   $connection = new mysqli($servername,$username,$password,$database);
 
-  // verifica se a conexão aconteceu, se não acontece, aparece o erro
+  // Verifica se a conexão aconteceu, se não acontece, aparece o erro
   if ($connection->connect_error) {
-    die("A conexão falhou: " . $connection->connect_error);
-  }
-  $sql_prod = "SELECT * FROM produtos";
-  $result_prod = $connection->query($sql_prod);
+    die("A conexão falhou: " . $connection->connect_error);}
 
+  // Variável que seleciona todas as colunas da table produtos
+  $sql_prod = "SELECT * FROM produtos";
+  // Conecta na database e armazena todas as colunas da tabela produtos na variável result_prod
+  $result_prod = $connection->query($sql_prod);
+  // Variável que seleciona todas as colunas da table empresas
   $sql_emp = "SELECT * FROM empresas";
+  // Conecta na database e armazena todas as colunas da tabela empresas na variável result_emp
   $result_emp = $connection->query($sql_emp);
 
-  // verifica se a conexão aconteceu, se não acontece, aparece o erro
+  // Verifica se a conexão aconteceu, se não acontece, aparece o erro
   if (!$result_prod) {
     die("A conexão falhou: " . $connection->connect_error);
   }
@@ -57,7 +60,9 @@
       </tr>
     </thead>
     <tbody>
-      <?php 
+      <?php
+      // Cada coluna é buscada na database para preencher corretamente cada linha
+      // Os botões redirecionam para os scripts de editar e deletar produtos
       while ($row = $result_prod->fetch_assoc()) {
       echo "<tr>
                 <td>$row[id]</td>
@@ -75,12 +80,11 @@
     </tbody>
   </table>
 
-    <!-- Botao Adicionar Produtos -->
+  <!-- Botão adicionar produtos, redireciona para o script de criar produto -->
   <button onclick="location.href='criarproduto.php'" type="submit" class="btn btn-primary" name="submit">Adicionar Produto</button>     
 </div>  
 
 <!-- Tabela de Empresas -->
-
 <div class="container my-5">
   <h2>Tabela de Empresas</h2>
   <p>A tabela abaixo contém as empresas.</p>            
@@ -96,6 +100,8 @@
     </thead>
     <tbody>
     <?php 
+      // Cada coluna é buscada na database para preencher corretamente cada linha
+      // Os botões redirecionam para os scripts de editar e deletar empresas
       while ($row = $result_emp->fetch_assoc()) {
       echo "<tr>
                 <td>$row[id]</td>
@@ -112,7 +118,7 @@
     </tbody>
   </table>
 
-  <!-- Botao Adicionar Empresas -->
+  <!-- Botão adicionar empresas, redireciona para o script de criar empresa -->
   <button onclick="location.href='criarempresa.php'" type="submit" class="btn btn-primary" name="submit">Adicionar Empresa</button>     
 </div>
 </body>

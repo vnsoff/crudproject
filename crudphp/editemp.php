@@ -14,27 +14,30 @@ $password = "";
 $database = "crudphp";
 $connection = new mysqli($servername,$username,$password,$database);
 
-//Se o método de request do servidor for GET
+// Se o método de request do servidor for GET
 if ($_SERVER['REQUEST_METHOD'] =='GET') {
-  //Se não tiver o id
+  // Se não tiver o id
   if (!isset($_GET["id"])) {
   //Se não houver ID, retornar para o index.php
   header("location: /crudproject/crudphp/index.php");
   exit;
   }
-
-  //Pega o id atual, seleciona tudo que tem relacionado a esse id na tabela produtos (no banco de dados) 
-  //E mostra na tela esses campos preenchidos
+  // Pega o ID com o método GET
   $id = $_GET["id"];
+  // Variável que seleciona todas as colunas da table empresas que contém ID
   $sql = "SELECT * FROM empresas WHERE id=$id";
+  // Conecta na database e armazena todas as colunas da tabela empresas na variável result
   $result = $connection->query($sql);
+  // Cada coluna é buscada na database para preencher corretamente cada linha
+  // Os botões redirecionam para os scripts de editar e deletar produtos
   $row = $result->fetch_assoc();
 
   //Se não há  linhas na tabela, ou seja, não há informações, retornar ao index.php também
   if (!$row) {
     header("location: /crudproject/crudphp/index.php");
   }
-
+  // Preenche as variáveis relacionadas ao ID que está sendo editado nas respectivas colunas
+  // E consequentemente preenche esses dados na tela, para mostrar o que está sendo editado
   $nome = $row["nome"];
   $cnpj = $row["cnpj"];
   $status = $row["status"];
@@ -43,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] =='GET') {
 
 //POST
 else {
-  //Utiliza o método post para guardar arrays de todos os inputs e o id desse formulário
+  //Utiliza o método post para guardar arrays de todos os inputs e o id desse formulário (mesmo o id não sendo alterável)
   $id = $_POST["id"];
   $nome = $_POST["nome"];
   $cnpj = $_POST["cnpj"];
@@ -121,6 +124,7 @@ else {
         </label>
       </div>
       <?php 
+      // Mensagem de dados alterados com sucesso
       if (!empty ($successMessage)) {
       echo "
       <div class ='alert alert-success alert-dismissible fade show' role 'alert'> 
@@ -129,7 +133,7 @@ else {
         ";
       }
       ?>
-      <!-- O botão enviar o POST (contendo inputs do formulário) -->
+      <!-- O botão submit envia o POST (contendo inputs do formulário) -->
       <button type="submit" class="btn btn-primary my-2" name="submit">Alterar</button>
 
       <!-- O botão vai redirecionar para index.php -->

@@ -1,31 +1,36 @@
 <?php 
-    //Inicializando as variáveis
+    // Inicializando as variáveis
     $nome = "";
     $valor = "";
     $status = "";
-    //Inicializando os alertas
+    // Inicializando os alertas
     $errorMessage = "";
     $successMessage = "";
 
-    //Cria conexão com o banco de dados
+    // Cria conexão com o banco de dados
     $servername = "localhost";
     $username = "root";
     $password = "";
     $database = "crudphp";
     $connection = new mysqli($servername,$username,$password,$database);
 
+    // Utiliza o método POST para guardar arrays de todos os inputs
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nome = $_POST["nome"];
         $valor = $_POST["valor"];
         $status = $_POST["status"];
-
+        // Caso os dados nome ou valor estejam vazios, mostrar mensagem de erro para preencher todos os campos
+        // Apenas inserir se todos os campos estiverem preenchidos
         do {
             if ( empty($nome) || empty($valor) ) {
                 $errorMessage = "É necessário preencher todos os campos do formulário.";
                 break;
             }
+            // Variável sql que insere as variáveis nos campos da database
             $sql = "INSERT INTO produtos (nome, valor, status)" . "VALUES ('$nome', '$valor', '$status')";
+            // Envia para o banco de dados
             $result = $connection->query($sql);
+            // Deixa os campos vazios novamente
             $nome = "";
             $valor = "";
             $status = "";
