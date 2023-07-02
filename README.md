@@ -1,10 +1,10 @@
 # CrudProject
-<h2>Sobre o teste</h2>
-<h3> 💻 Arquivos principais: Acessar o index.php na pasta crudphp, e indexprod.php na pasta Views do crudigniter</h3>
-<p>✨ Foi implementado dois sistemas de CRUD (Create, Read, Update e Delete), o primeiro utilizando apenas o PHP e o segundo, utilizando o framework CodeIgniter 4. </p>
-<p> ✨ Em ambos foi utilizado o Bootstrap e um pouco de Javascript. </p>
-<p> ✨ O banco de dados utilizado foi o Mysql como solicitado, instalado por meio do xampp. </p>
-<p> ✨ A estrutura do CRUD em PHP foi composta por um arquivo principal index e um para cada operação de cada tabela, ja com o CodeIgniter 4 a estrutura está um pouco diferente, as tabelas estão em páginas diferentes, há um controller, model e index para cada tabela.</p>
-<p> ✨ Os tipos de dados utilizados no Mysql foram INT com auto incremento para o ID, VARCHAR para o nome nas duas tabelas, BIGINT(14) para o CNPJ, INT para o valor e por fim ENUM pré definido para o status ao invés do BOOLEAN pois foi mais eficiente.</p>
-<p> ✨ O crud em PHP puro está funcionando 100% sem pendências, já o crudigniter que utiliza o CodeIgniter 4 como framework, há uma pendência no Update dos dados, que ainda estou identificando outra forma de fazer para corrigir. </p>
-<p> ✨ Antes do teste eu não sabia utilizar MYSQL, PHP, Code Igniter 4 e Bootstrap, porém em poucos dias já foi possível entender como funciona o back-end, e como se armazenam e se alteram as informações. Tive bastante facilidade em utilizar o framework Bootstrap para CSS por conta do meu conhecimento prévio em CSS, e tive mais dificuldade em utilizar o CodeIgniter 4. Alguns dos desafios que tive ao fazer o teste foram: utilizar o framework CodeIgniter 4, entender como funciona os métodos de GET e POST, como armazenar os dados de status e o update dos dados. </p>
+<h2>About the projectteste</h2>
+<h3> 💻 Access index.php in the folder crudphp, and indexprod.php in the folder Views of crudigniter</h3>
+<p> ✨ It was implemented two CRUD (Create, Read, Update e Delete), the first using vanilla PHP and the second, using a PHP framework, CodeIgniter 4. </p>
+<p> ✨ In both, Bootstrap and a little Javascript were used. </p>
+<p> ✨ The database used was Mysql as requested, installed through xampp. </p>
+<p> ✨ The structure of CRUD in PHP was composed of a main index file and one for each operation of each table, with CodeIgniter 4 the structure is a little different, the tables are on different pages, there is a controller, model and index for each table.</p>
+<p> ✨ The data types used in Mysql were INT with autoincrement for the ID, VARCHAR for the name in the two tables, BIGINT(14) for the CNPJ, INT for the value and finally ENUM predefined for the status instead of BOOLEAN because it was more efficient.</p>
+<p> ✨ The crud in pure PHP is working 100% without pending issues, while the crudigniter that uses CodeIgniter 4 as a framework, there is a pending update of the data, which I am still identifying another way to fix this issue.</p>
+<p> ✨ Before the test, I didn't know how to use MYSQL, PHP, Code Igniter 4 and Bootstrap, but in a few days it was possible to understand how the back-end works, and how information is stored and changed. I found it quite easy to use the Bootstrap framework for CSS due to my prior knowledge of CSS, and I had more difficulty using CodeIgniter 4. Some of the challenges I had while taking the test were: using the CodeIgniter 4 framework, understanding how the GET and POST methods, how to store status data and update data. </p>
