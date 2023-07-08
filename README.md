@@ -1,6 +1,6 @@
 # CrudProject
 <h2>About the project</h2>
-<h3> 💻 Access index.php in the folder crudphp, and indexprod.php in the folder Views of crudigniter</h3>
+<p> 💻 Access index.php in the folder crudphp, and indexprod.php in the folder Views of crudigniter</h3>
 <p> ✨ It was implemented two CRUD (Create, Read, Update e Delete), the first using vanilla PHP and the second, using a PHP framework, CodeIgniter 4. </p>
 <p> ✨ In both, Bootstrap and a little Javascript were used. </p>
 <p> ✨ The database used was Mysql as requested, installed through xampp. </p>
